@@ -1,4 +1,4 @@
-"""dff command line."""
+"""fdf command line."""
 
 import argparse
 import os
@@ -9,7 +9,7 @@ from freedataflow import registry
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(prog="dff")
+    parser = argparse.ArgumentParser(prog="fdf")
     commands = parser.add_subparsers(dest="command", required=True)
 
     run = commands.add_parser("run", help="Run a Python script and record its reads/writes")

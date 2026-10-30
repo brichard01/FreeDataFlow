@@ -1,6 +1,6 @@
 """reads/writes markers.
 
-They do nothing unless the DFF_RECORD environment variable is set (by the dff
+They do nothing unless the DFF_RECORD environment variable is set (by the fdf
 command). In that case they add the asset, the calling script and the
 input/output link to dataflow.json, without ever removing or overwriting anything.
 """
