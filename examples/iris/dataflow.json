@@ -1,0 +1,70 @@
+{
+  "assets": {
+    "iris_clean": {
+      "read": null,
+      "write": null
+    },
+    "iris_features": {
+      "read": null,
+      "write": null
+    },
+    "iris_train": {
+      "read": null,
+      "write": null
+    },
+    "iris_test": {
+      "read": null,
+      "write": null
+    },
+    "iris_model": {
+      "read": null,
+      "write": null
+    },
+    "iris_scores": {
+      "read": null,
+      "write": null
+    }
+  },
+  "scripts": {
+    "01_clean.py": {
+      "inputs": [],
+      "outputs": [
+        "iris_clean"
+      ]
+    },
+    "02_features.py": {
+      "inputs": [
+        "iris_clean"
+      ],
+      "outputs": [
+        "iris_features"
+      ]
+    },
+    "03_split.py": {
+      "inputs": [
+        "iris_features"
+      ],
+      "outputs": [
+        "iris_train",
+        "iris_test"
+      ]
+    },
+    "05_score.py": {
+      "inputs": [
+        "iris_model",
+        "iris_test"
+      ],
+      "outputs": [
+        "iris_scores"
+      ]
+    },
+    "04_train.py": {
+      "inputs": [
+        "iris_train"
+      ],
+      "outputs": [
+        "iris_model"
+      ]
+    }
+  }
+}
