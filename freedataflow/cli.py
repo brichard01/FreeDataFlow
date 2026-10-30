@@ -8,6 +8,13 @@ import sys
 from freedataflow import registry
 
 
+def run(script: str, script_args: list[str] | None = None) -> int:
+    """Run a script with recording on, after clearing its previous entry. Returns its exit code."""
+    registry.remove_script(script)
+    env = {**os.environ, "FDF_RECORD": "1"}
+    return subprocess.run([sys.executable, script, *(script_args or [])], env=env).returncode
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(prog="fdf")
     commands = parser.add_subparsers(dest="command", required=True)
@@ -16,12 +23,17 @@ def main() -> int:
     run.add_argument("script", help="Python file to run")
     run.add_argument("args", nargs=argparse.REMAINDER, help="Arguments passed to the script")
 
+    ui = commands.add_parser("ui", help="Start the web interface")
+    ui.add_argument("--port", type=int, default=8000)
+
     args = parser.parse_args()
 
     if args.command == "run":
-        registry.remove_script(args.script)
-        env = {**os.environ, "FDF_RECORD": "1"}
-        return subprocess.run([sys.executable, args.script, *args.args], env=env).returncode
+        return run(args.script, args.args)
+    if args.command == "ui":
+        import uvicorn
+
+        uvicorn.run("freedataflow.ui.server:app", port=args.port)
     return 0
 
 

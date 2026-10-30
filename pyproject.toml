@@ -9,3 +9,12 @@ requires-python = ">=3.10"
 
 [project.scripts]
 fdf = "freedataflow.cli:main"
+
+[project.optional-dependencies]
+ui = ["fastapi", "uvicorn"]
+
+[tool.setuptools.packages.find]
+include = ["freedataflow*"]
+
+[tool.setuptools.package-data]
+freedataflow = ["ui/static/**/*"]
