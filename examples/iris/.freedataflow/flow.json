@@ -49,6 +49,14 @@
         "iris_test"
       ]
     },
+    "04_train.py": {
+      "inputs": [
+        "iris_train"
+      ],
+      "outputs": [
+        "iris_model"
+      ]
+    },
     "05_score.py": {
       "inputs": [
         "iris_model",
@@ -56,14 +64,6 @@
       ],
       "outputs": [
         "iris_scores"
-      ]
-    },
-    "04_train.py": {
-      "inputs": [
-        "iris_train"
-      ],
-      "outputs": [
-        "iris_model"
       ]
     }
   }
