@@ -20,7 +20,7 @@ def main() -> int:
 
     if args.command == "run":
         registry.remove_script(args.script)
-        env = {**os.environ, "DFF_RECORD": "1"}
+        env = {**os.environ, "FDF_RECORD": "1"}
         return subprocess.run([sys.executable, args.script, *args.args], env=env).returncode
     return 0
 
