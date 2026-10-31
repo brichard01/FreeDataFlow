@@ -1,0 +1,9 @@
+{
+  "scripts": [
+    "01_clean.py",
+    "02_features.py",
+    "03_split.py",
+    "04_train.py",
+    "05_score.py"
+  ]
+}

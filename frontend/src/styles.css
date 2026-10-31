@@ -1,0 +1,362 @@
+/* ---------- Font: Inter, latin subset only (copied from @fontsource-variable/inter) to keep the build light ---------- */
+
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(@fontsource-variable/inter/files/inter-latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+/* ---------- Base ---------- */
+
+body {
+  margin: 0;
+  font-family: 'Inter Variable', sans-serif;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+.error-text {
+  margin: 0;
+  font-size: 13px;
+  color: #dc2626;
+}
+
+/* ---------- Layout ---------- */
+
+.app {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+.message {
+  padding: 16px;
+}
+
+/* ---------- Buttons ---------- */
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+}
+
+.button-full {
+  width: 100%;
+  padding: 10px 12px;
+  font-weight: 600;
+}
+
+.button-primary {
+  border: none;
+  background: black;
+  color: white;
+  font-weight: 600;
+}
+
+.button-run {
+  border: none;
+  background: #16a34a;
+  color: white;
+}
+
+.button-primary:disabled,
+.button-run:disabled {
+  background: #9ca3af;
+}
+
+/* ---------- Top bar ---------- */
+
+.topbar {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 48px;
+  padding: 0 12px;
+  background: black;
+}
+
+.topbar-button {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.menu-wrapper {
+  position: relative;
+  display: flex;
+  height: 100%;
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  padding: 4px 0;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.menu-item {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: none;
+  font-size: 14px;
+  text-align: left;
+}
+
+.menu-item:hover {
+  background: #f3f4f6;
+}
+
+.menu-divider {
+  margin: 4px 0;
+  border-top: 1px solid #eee;
+}
+
+.menu-heading {
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.menu-empty {
+  padding: 4px 12px 8px;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* ---------- Graph nodes ---------- */
+
+.react-flow__node {
+  cursor: pointer;
+}
+
+.node {
+  width: 140px; /* keep in sync with NODE_WIDTH in layout.ts */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.react-flow__handle.node-handle {
+  top: 20px; /* edges attach at the icon's height */
+}
+
+.node-icon {
+  position: relative;
+}
+
+.node-badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  background: black;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.node-label {
+  font-size: 12px;
+  text-align: center;
+  word-break: break-word;
+}
+
+/* ---------- Side panel ---------- */
+
+.side-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-left: 1px solid #ddd;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.08);
+  transform: translateX(340px);
+  transition: transform 0.2s ease;
+}
+
+.side-panel.open {
+  transform: translateX(0);
+}
+
+.side-panel-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: none;
+}
+
+.node-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 16px 16px;
+}
+
+.node-details-name {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  word-break: break-word;
+}
+
+.run-file {
+  padding: 0 16px;
+}
+
+.run-file .error-text {
+  margin-top: 12px;
+}
+
+/* ---------- Pipeline panel ---------- */
+
+.pipeline-title {
+  padding: 32px 16px 16px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.pipeline-list {
+  flex: 1;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0 16px;
+  list-style: none;
+}
+
+.pipeline-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  font-size: 14px;
+  cursor: grab;
+}
+
+.pipeline-row.locked {
+  cursor: default;
+}
+
+.pipeline-row.dragging {
+  opacity: 0.4;
+}
+
+.pipeline-index {
+  width: 18px;
+  font-weight: 600;
+}
+
+.pipeline-script {
+  flex: 1;
+  word-break: break-word;
+}
+
+.pipeline-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border-top: 1px solid #eee;
+}
+
+.saved-text {
+  margin: 0;
+  font-size: 13px;
+  color: #16a34a;
+}
+
+/* ---------- Save dialog ---------- */
+
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.dialog {
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+}
+
+.dialog-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.dialog-input {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.dialog-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}

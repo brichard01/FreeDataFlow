@@ -2,7 +2,7 @@
 
 They do nothing unless the FDF_RECORD environment variable is set (by the fdf
 command). In that case they add the asset, the calling script and the
-input/output link to dataflow.json, without ever removing or overwriting anything.
+input/output link to .freedataflow/flow.json, without ever removing or overwriting anything.
 """
 
 import os
